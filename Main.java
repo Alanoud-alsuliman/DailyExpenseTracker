@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    static ArrayList<Expense> expenses = new ArrayList<>();
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         int choice;
 
         do {
@@ -15,10 +18,11 @@ public class Main {
             System.out.print("Enter your choice: ");
 
             choice = input.nextInt();
+            input.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Add Expense feature will be implemented later.");
+                    addExpense();
                     break;
                 case 2:
                     System.out.println("View Expenses feature will be implemented later.");
@@ -39,5 +43,25 @@ public class Main {
         } while (choice != 5);
 
         input.close();
+    }
+
+    public static void addExpense() {
+        System.out.print("Enter amount: ");
+        double amount = input.nextDouble();
+        input.nextLine();
+
+        System.out.print("Enter category (Food / Transport / Entertainment): ");
+        String category = input.nextLine();
+
+        System.out.print("Enter description: ");
+        String description = input.nextLine();
+
+        System.out.print("Enter date: ");
+        String date = input.nextLine();
+
+        Expense expense = new Expense(amount, category, description, date);
+        expenses.add(expense);
+
+        System.out.println("Expense added successfully.");
     }
 }
