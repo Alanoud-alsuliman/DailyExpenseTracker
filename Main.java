@@ -9,7 +9,8 @@ public class Main {
         int choice;
 
         do {
-            System.out.println("\n===== Daily Expense Tracker =====");
+         
+System.out.println("\n===== Daily Expense Tracker - Total Expenses Feature =====");
             System.out.println("1. Add Expense");
             System.out.println("2. View Expenses");
             System.out.println("3. Show Total Expenses");
@@ -22,13 +23,13 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Add Expense feature already implemented.");
+                    addExpense();
                     break;
                 case 2:
-                    viewExpenses();
+                    System.out.println("View Expenses feature will be checked later.");
                     break;
                 case 3:
-                    System.out.println("Total Expenses feature will be implemented later.");
+                    showTotalExpenses();
                     break;
                 case 4:
                     System.out.println("Category Report feature will be implemented later.");
@@ -45,15 +46,33 @@ public class Main {
         input.close();
     }
 
-    public static void viewExpenses() {
-        if (expenses.isEmpty()) {
-            System.out.println("No expenses found.");
-            return;
+    public static void addExpense() {
+        System.out.print("Enter amount: ");
+        double amount = input.nextDouble();
+        input.nextLine();
+
+        System.out.print("Enter category (Food / Transport / Entertainment): ");
+        String category = input.nextLine();
+
+        System.out.print("Enter description: ");
+        String description = input.nextLine();
+
+        System.out.print("Enter date: ");
+        String date = input.nextLine();
+
+        Expense expense = new Expense(amount, category, description, date);
+        expenses.add(expense);
+
+        System.out.println("Expense added successfully.");
+    }
+
+    public static void showTotalExpenses() {
+        double total = 0;
+
+        for (Expense expense : expenses) {
+            total += expense.getAmount();
         }
 
-        System.out.println("\n===== All Expenses =====");
-        for (Expense expense : expenses) {
-            System.out.println(expense);
-        }
+        System.out.println("Total Expenses: " + total);
     }
 }
