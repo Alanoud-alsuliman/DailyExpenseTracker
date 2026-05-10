@@ -32,8 +32,8 @@ public class Main {
                     showTotalExpenses();
                     break;
                 case 4:
-                    System.out.println("Category Report feature will be implemented later.");
-                    break;
+                showCategoryReport();
+                break;
                 case 5:
                     System.out.println("Thank you for using Daily Expense Tracker.");
                     break;
@@ -75,4 +75,27 @@ public class Main {
 
         System.out.println("Total Expenses: " + total);
     }
+
+
+
+    public static void showCategoryReport() {
+    double food = 0;
+    double transport = 0;
+    double entertainment = 0;
+
+    for (Expense expense : expenses) {
+        if (expense.getCategory().equalsIgnoreCase("Food")) {
+            food += expense.getAmount();
+        } else if (expense.getCategory().equalsIgnoreCase("Transport")) {
+            transport += expense.getAmount();
+        } else if (expense.getCategory().equalsIgnoreCase("Entertainment")) {
+            entertainment += expense.getAmount();
+        }
+    }
+
+    System.out.println("\n===== Category Report =====");
+    System.out.println("Food: " + food);
+    System.out.println("Transport: " + transport);
+    System.out.println("Entertainment: " + entertainment);
+}
 }
