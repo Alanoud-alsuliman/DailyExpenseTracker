@@ -9,8 +9,8 @@ public class Main {
         int choice;
 
         do {
-         
-System.out.println("\n===== Daily Expense Tracker - Total Expenses Feature =====");
+
+            System.out.println("\n===== Daily Expense Tracker =====");
             System.out.println("1. Add Expense");
             System.out.println("2. View Expenses");
             System.out.println("3. Show Total Expenses");
